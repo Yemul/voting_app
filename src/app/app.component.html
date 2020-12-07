@@ -1,0 +1,25 @@
+<div id="wrapper">
+  <div id="left">
+
+    <ul class="components">
+      <li *ngFor="let component of components"
+        [class.selected]="component.value === vote"
+        (click)="onSelect(component.value)">
+        <span class="badge">{{component.value}}</span> {{component.text}}
+      </li>
+    </ul>
+
+    <button class="button" (click)="castVote()">Vote</button>
+
+  </div>
+<div style="display: block;" id="right" *ngIf="pieChartLabels && pieChartData">
+  <canvas baseChart 
+    [data]="pieChartData" 
+    [labels]="pieChartLabels" 
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [plugins]="pieChartPlugins"
+    [legend]="pieChartLegend">
+  </canvas>
+</div>
+</div>
